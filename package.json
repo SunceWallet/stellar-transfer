@@ -1,68 +1,44 @@
 {
-  "name": "@satoshipay/stellar-transfer",
-  "version": "0.0.0",
-  "description": "Stellar SEP-24 client implementation",
-  "author": "SatoshiPay Ltd (https://satoshipay.io/)",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "lint": "tslint --project .",
-    "precommit": "lint-staged",
-    "prepare": "npm run build",
-    "prettier": "prettier --write 'src/**.ts' *.md",
-    "test": "ava",
-    "test:ci": "ava",
-    "posttest": "npm run lint"
-  },
-  "peerDependencies": {
-    "stellar-sdk": ">= 3.0.0"
-  },
-  "dependencies": {
-    "@types/big.js": "^4.0.5",
-    "axios": "^0.21.1",
-    "big.js": "^5.2.2",
-    "debug": "^4.1.1",
-    "form-data": "^3.0.0"
-  },
-  "devDependencies": {
-    "@types/debug": "^4.1.2",
-    "ava": "^1.2.1",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.4",
-    "prettier": "^1.16.4",
-    "stellar-sdk": "^3.1.2",
-    "tap-xunit": "^2.3.0",
-    "ts-node": "^8.0.2",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.7.5"
-  },
-  "ava": {
-    "compileEnhancements": false,
-    "extensions": [
-      "ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ]
-  },
-  "files": [
-    "dist/"
-  ],
-  "lint-staged": {
-    "ignore": [
-      "**/*.yml"
-    ],
-    "linters": {
-      "*": [
-        "prettier --write",
-        "git add"
-      ]
-    }
-  },
-  "prettier": {
-    "semi": false
-  }
+	"name": "@satoshipay/stellar-transfer",
+	"version": "0.0.0",
+	"description": "Stellar SEP-24 client implementation",
+	"author": "SatoshiPay Ltd (https://satoshipay.io/)",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"typings": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"format": "biome check",
+		"precommit": "lint-staged",
+		"prepare": "husky",
+		"test": "uvu -r tsm test",
+		"test:ci": "uvu -r tsm test"
+	},
+	"peerDependencies": {
+		"@stellar/stellar-sdk": ">= 3.0.0"
+	},
+	"dependencies": {
+		"@stellar/stellar-sdk": "^13.1.0",
+		"axios": "^1.8.1",
+		"big.js": "^6.2.2",
+		"debug": "^4.4.0",
+		"form-data": "^4.0.2"
+	},
+	"devDependencies": {
+    "@types/big.js": "^6.2.2",
+		"@biomejs/biome": "1.9.4",
+		"@types/debug": "^4.1.12",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.4.3",
+		"tsm": "^2.3.0",
+		"typescript": "^5.8.2",
+		"uvu": "^0.5.6"
+	},
+	"files": ["dist/"],
+	"lint-staged": {
+		"ignore": ["**/*.yml"],
+		"linters": {
+			"*": ["git add"]
+		}
+	}
 }

@@ -1,5 +1,6 @@
-import test from "ava"
-import { Keypair, Networks } from "stellar-sdk"
+import { test } from "uvu"
+import * as assert from "uvu/assert"
+import { Keypair, Networks } from "@stellar/stellar-sdk"
 import {
   fetchTransferInfos,
   openTransferServer,
@@ -8,7 +9,7 @@ import {
   Withdrawal
 } from "../src/index"
 
-test("interactive withdrawal works", async t => {
+test("interactive withdrawal works", async () => {
   const keypair = Keypair.random()
 
   const transferServer = await openTransferServer(
@@ -24,7 +25,9 @@ test("interactive withdrawal works", async t => {
   })
   const instructions = await withdrawal.interactive()
 
-  t.is(instructions.type, TransferResultType.kyc)
-  t.is((instructions as any).subtype, KYCResponseType.interactive)
-  t.is((instructions as any).data.type, "interactive_customer_info_needed")
+  assert.is(instructions.type, TransferResultType.kyc)
+  assert.is((instructions as any).subtype, KYCResponseType.interactive)
+  assert.is((instructions as any).data.type, "interactive_customer_info_needed")
 })
+
+test.run()

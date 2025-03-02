@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios"
 import FormData from "form-data"
-import { Asset } from "stellar-sdk"
+import { Asset } from "@stellar/stellar-sdk"
 import { ResponseError } from "./errors"
 import { createKYCInstructions, isKYCRequired, KYCInstructions } from "./kyc"
 import { TransferResultType } from "./result"
@@ -184,10 +184,11 @@ async function requestInteractiveDeposit(
       })
     })
   } catch (error) {
-    if (error && error.response && error.response.status === 404) {
+    const response = (error as any).response as AxiosResponse
+    if (response && response.status === 404) {
       return requestLegacyDeposit(deposit, authToken)
-    } else if (error && error.response) {
-      throw ResponseError(error.response, deposit.transferServer)
+    } else if (response) {
+      throw ResponseError(response, deposit.transferServer)
     } else {
       return requestLegacyDeposit(deposit, authToken)
     }
