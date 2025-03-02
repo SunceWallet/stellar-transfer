@@ -20,15 +20,15 @@
 	},
 	"dependencies": {
 		"@stellar/stellar-sdk": "^13.1.0",
-		"@types/big.js": "^4.0.5",
-		"axios": "^0.21.1",
-		"big.js": "^5.2.2",
-		"debug": "^4.1.1",
-		"form-data": "^3.0.0"
+		"axios": "^1.8.1",
+		"big.js": "^6.2.2",
+		"debug": "^4.4.0",
+		"form-data": "^4.0.2"
 	},
 	"devDependencies": {
+    "@types/big.js": "^6.2.2",
 		"@biomejs/biome": "1.9.4",
-		"@types/debug": "^4.1.2",
+		"@types/debug": "^4.1.12",
 		"husky": "^9.1.7",
 		"lint-staged": "^15.4.3",
 		"tsm": "^2.3.0",
