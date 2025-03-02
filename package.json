@@ -1,52 +1,45 @@
 {
-  "name": "@satoshipay/stellar-transfer",
-  "version": "0.0.0",
-  "description": "Stellar SEP-24 client implementation",
-  "author": "SatoshiPay Ltd (https://satoshipay.io/)",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "format": "biome check --write",
-    "precommit": "lint-staged",
-    "prepare": "husky",
-    "test": "uvu -r tsm test",
-    "test:ci": "uvu -r tsm test",
-    "posttest": "npm run format"
-  },
-  "peerDependencies": {
-    "stellar-sdk": ">= 3.0.0"
-  },
-  "dependencies": {
-    "@types/big.js": "^4.0.5",
-    "axios": "^0.21.1",
-    "big.js": "^5.2.2",
-    "debug": "^4.1.1",
-    "form-data": "^3.0.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/debug": "^4.1.2",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "stellar-sdk": "^8.2.3",
-    "tsm": "^2.3.0",
-    "typescript": "^5.8.2",
-    "uvu": "^0.5.6"
-  },
-  "files": [
-    "dist/"
-  ],
-  "lint-staged": {
-    "ignore": [
-      "**/*.yml"
-    ],
-    "linters": {
-      "*": [
-        "biome check --write",
-        "git add"
-      ]
-    }
-  }
+	"name": "@satoshipay/stellar-transfer",
+	"version": "0.0.0",
+	"description": "Stellar SEP-24 client implementation",
+	"author": "SatoshiPay Ltd (https://satoshipay.io/)",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"typings": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"format": "biome check",
+		"precommit": "lint-staged",
+		"prepare": "husky",
+		"test": "uvu -r tsm test",
+		"test:ci": "uvu -r tsm test",
+		"posttest": "npm run format"
+	},
+	"peerDependencies": {
+		"@stellar/stellar-sdk": ">= 3.0.0"
+	},
+	"dependencies": {
+		"@stellar/stellar-sdk": "^13.1.0",
+		"@types/big.js": "^4.0.5",
+		"axios": "^0.21.1",
+		"big.js": "^5.2.2",
+		"debug": "^4.1.1",
+		"form-data": "^3.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/debug": "^4.1.2",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.4.3",
+		"tsm": "^2.3.0",
+		"typescript": "^5.8.2",
+		"uvu": "^0.5.6"
+	},
+	"files": ["dist/"],
+	"lint-staged": {
+		"ignore": ["**/*.yml"],
+		"linters": {
+			"*": ["git add"]
+		}
+	}
 }

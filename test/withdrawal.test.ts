@@ -1,6 +1,6 @@
 import { test } from "uvu"
 import * as assert from "uvu/assert"
-import { Keypair, Networks } from "stellar-sdk"
+import { Keypair, Networks } from "@stellar/stellar-sdk"
 import {
   fetchTransferInfos,
   openTransferServer,

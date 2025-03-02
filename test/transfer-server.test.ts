@@ -1,6 +1,6 @@
 import { test } from "uvu"
 import * as assert from "uvu/assert"
-import { Networks } from "stellar-sdk"
+import { Networks } from "@stellar/stellar-sdk"
 import { openTransferServer } from "../src/index"
 
 test("can initialize a TransferServer", async () => {

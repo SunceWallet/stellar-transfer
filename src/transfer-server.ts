@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios"
-import { Asset, Networks, Server, StellarTomlResolver } from "stellar-sdk"
-import { StellarToml } from "./stellar-toml"
+import { Asset, Networks, Horizon, StellarToml } from "@stellar/stellar-sdk"
 import { joinURL } from "./util"
 
 export interface TransferOptions {
@@ -15,7 +14,7 @@ function fail(message: string): never {
   throw Error(message)
 }
 
-function getTransferServerURL(stellarTomlData: StellarToml): string | null {
+function getTransferServerURL(stellarTomlData: StellarToml.Api.StellarToml): string | null {
   return (
     stellarTomlData.TRANSFER_SERVER_SEP0024 ||
     stellarTomlData.TRANSFER_SERVER ||
@@ -67,7 +66,7 @@ export async function openTransferServer(
   network: Networks,
   options?: TransferOptions
 ) {
-  const stellarTomlData = await StellarTomlResolver.resolve(domain)
+  const stellarTomlData = await StellarToml.Resolver.resolve(domain)
   const serverURL =
     getTransferServerURL(stellarTomlData) ||
     fail(`There seems to be no transfer server on ${domain}.`)
@@ -77,14 +76,14 @@ export async function openTransferServer(
 
 export async function locateTransferServer(
   domain: string,
-  options?: StellarTomlResolver.StellarTomlResolveOptions
+  options?: StellarToml.Api.StellarTomlResolveOptions
 ): Promise<string | null> {
-  const stellarTomlData = await StellarTomlResolver.resolve(domain, options)
+  const stellarTomlData = await StellarToml.Resolver.resolve(domain, options)
   return getTransferServerURL(stellarTomlData)
 }
 
 export function resolveAssets(
-  stellarTomlData: StellarToml,
+  stellarTomlData: StellarToml.Api.StellarToml,
   domain: string = "?"
 ): Asset[] {
   if (!stellarTomlData.CURRENCIES) {
@@ -104,7 +103,7 @@ export async function resolveTransferServerURL(
     throw Error("Native XLM asset does not have an issuer account.")
   }
 
-  const horizon = new Server(horizonURL)
+  const horizon = new Horizon.Server(horizonURL)
   const accountData = await horizon.loadAccount(asset.getIssuer())
   const homeDomain: string | undefined = (accountData as any).home_domain
 
