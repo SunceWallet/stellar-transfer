@@ -12,8 +12,7 @@
 		"precommit": "lint-staged",
 		"prepare": "husky",
 		"test": "uvu -r tsm test",
-		"test:ci": "uvu -r tsm test",
-		"posttest": "npm run format"
+		"test:ci": "uvu -r tsm test"
 	},
 	"peerDependencies": {
 		"@stellar/stellar-sdk": ">= 3.0.0"
