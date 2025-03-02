@@ -1,15 +1,18 @@
-import test from "ava"
+import { test } from "uvu"
+import * as assert from "uvu/assert"
 import { Networks } from "stellar-sdk"
 import { openTransferServer } from "../src/index"
 
-test("can initialize a TransferServer", async t => {
+test("can initialize a TransferServer", async () => {
   const transferServer = await openTransferServer(
     "sandbox.anchorusd.com",
     Networks.TESTNET
   )
 
-  t.deepEqual(transferServer.assets.map(asset => asset.code), ["USD"])
+  assert.equal(transferServer.assets.map(asset => asset.code), ["USD"])
 
   const response = await transferServer.get("/info")
-  t.deepEqual(Object.keys(response.data.withdraw), ["USD"])
+  assert.equal(Object.keys(response.data.withdraw), ["USD"])
 })
+
+test.run()

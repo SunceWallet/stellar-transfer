@@ -204,10 +204,11 @@ async function requestInteractiveWithdrawal(
       })
     })
   } catch (error) {
-    if (error && error.response && error.response.status === 404) {
+    const response = (error as any).response as AxiosResponse
+    if (response && response.status === 404) {
       return requestLegacyWithdrawal(withdrawal, authToken)
-    } else if (error && error.response) {
-      throw ResponseError(error.response, withdrawal.transferServer)
+    } else if (response) {
+      throw ResponseError(response, withdrawal.transferServer)
     } else {
       return requestLegacyWithdrawal(withdrawal, authToken)
     }

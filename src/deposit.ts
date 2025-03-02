@@ -184,10 +184,11 @@ async function requestInteractiveDeposit(
       })
     })
   } catch (error) {
-    if (error && error.response && error.response.status === 404) {
+    const response = (error as any).response as AxiosResponse
+    if (response && response.status === 404) {
       return requestLegacyDeposit(deposit, authToken)
-    } else if (error && error.response) {
-      throw ResponseError(error.response, deposit.transferServer)
+    } else if (response) {
+      throw ResponseError(response, deposit.transferServer)
     } else {
       return requestLegacyDeposit(deposit, authToken)
     }
