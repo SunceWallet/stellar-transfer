@@ -38,7 +38,7 @@
 	"lint-staged": {
 		"ignore": ["**/*.yml"],
 		"linters": {
-			"*": ["git add"]
+			"*": ["npm run format", "git add"]
 		}
 	}
 }
