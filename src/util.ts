@@ -7,7 +7,7 @@ export function joinURL(...fragments: string[]) {
 		} else if (joined.endsWith("/") || fragment.startsWith("/")) {
 			return joined + fragment;
 		} else {
-			return joined + "/" + fragment;
+			return `${joined}/${fragment}`;
 		}
 	}, "");
 }

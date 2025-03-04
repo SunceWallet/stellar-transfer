@@ -19,6 +19,17 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
+			"suspicious": {
+				"noExplicitAny": "warn"
+			},
+			"complexity": {
+				"useLiteralKeys": "off",
+				"noForEach": "off"
+			},
+			"style": {
+				"noNonNullAssertion": "off",
+				"noUselessElse": "warn"
+			},
 			"recommended": true
 		}
 	},

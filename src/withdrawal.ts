@@ -294,7 +294,7 @@ export function createWithdrawalPayment(
 		builder.addMemo(Memo.text(response.data.memo));
 	} else if (response.data.memo) {
 		throw Error(
-			`Anchor requires a memo on the withdrawal transaction, but did not specify a valid memo type.`,
+			"Anchor requires a memo on the withdrawal transaction, but did not specify a valid memo type.",
 		);
 	}
 
