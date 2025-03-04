@@ -1,6 +1,6 @@
 {
 	"name": "@suncewallet/stellar-transfer",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Stellar SEP-24 client implementation",
 	"author": "SatoshiPay Ltd (https://satoshipay.io/)",
 	"license": "MIT",
@@ -34,11 +34,18 @@
 		"typescript": "^5.8.2",
 		"uvu": "^0.5.6"
 	},
-	"files": ["dist/"],
+	"files": [
+		"dist/"
+	],
 	"lint-staged": {
-		"ignore": ["**/*.yml"],
+		"ignore": [
+			"**/*.yml"
+		],
 		"linters": {
-			"*": ["npm run format", "git add"]
+			"*": [
+				"npm run format",
+				"git add"
+			]
 		}
 	}
 }
