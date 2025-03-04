@@ -1,3 +1,3 @@
-import createDebugLogger from "debug"
+import createDebugLogger from "debug";
 
-export const debug = createDebugLogger("stellar-transfer")
+export const debug = createDebugLogger("stellar-transfer");
