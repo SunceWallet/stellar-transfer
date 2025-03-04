@@ -8,7 +8,7 @@
 	"typings": "dist/index.d.ts",
 	"scripts": {
 		"build": "tsc",
-		"format": "biome check",
+		"format": "biome check src/",
 		"precommit": "lint-staged",
 		"prepare": "husky",
 		"test": "uvu -r tsm test",
